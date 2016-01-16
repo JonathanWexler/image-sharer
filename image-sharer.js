@@ -1,23 +1,27 @@
+// Is the code running in the client? the browser?
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
+  console.log("Running in Client!");
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
+  var images = [
+  {
+    image_src: "guyf.gif",
+    image_alt: "Reverse Guy"
+  },
+    {
+    image_src: "alanb.gif",
+    image_alt: "Alan as Bieber"
+  },
+    {
+    image_src: "alan.gif",
+    image_alt: "Alan Gif"
+  }
+  ]
 
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
+
+  Template.images.helpers ({data_images: images})
 }
 
+// Is the code running in the server?
 if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
+  console.log("Running in Server!");
 }
