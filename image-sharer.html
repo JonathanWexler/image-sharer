@@ -3,13 +3,31 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Share Images!</h1>
 
   {{> images}}
 </body>
 
 <template name="images">
-    {{#each data_images}}
-    <img src="{{image_src}}" alt="{{image_alt}}"/>
-    {{/each}}
+    <div class="container">
+        <div class="row">
+            {{#each data_images}}
+            <div class="col-xs-12 col-md-3">
+
+                <div class="thumbnail">
+
+
+                    <img src="{{image_src}}" alt="{{image_alt}}"/>
+
+                    <div class="caption">
+                        <h1> Image</h1>
+                        <p>{{image_alt}}</p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}    
+
+        </div>
+    </div>
+
 </template>
