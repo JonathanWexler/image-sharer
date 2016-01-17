@@ -3,10 +3,14 @@
 </head>
 
 <body>
-  <h1>Share Images!</h1>
-
+  <h1>Hello from here</h1>
+  {{> time}}
   {{> images}}
 </body>
+
+<template name="time">
+    <h1>The time is: {{now}}</h1>
+</template>
 
 <template name="images">
     <div class="container">

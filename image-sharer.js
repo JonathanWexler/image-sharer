@@ -7,11 +7,11 @@ if (Meteor.isClient) {
     image_src: "guyf.gif",
     image_alt: "Reverse Guy"
   },
-    {
+  {
     image_src: "alanb.gif",
     image_alt: "Alan as Bieber"
   },
-    {
+  {
     image_src: "alan.gif",
     image_alt: "Alan Gif"
   }
@@ -19,6 +19,9 @@ if (Meteor.isClient) {
 
 
   Template.images.helpers ({data_images: images})
+  Template.time.helpers({
+    now: new Date()
+  })
 }
 
 // Is the code running in the server?
