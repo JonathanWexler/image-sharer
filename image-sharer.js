@@ -1,3 +1,6 @@
+Images = new Mongo.Collection("images");
+console.log(images.find().count());
+
 // Is the code running in the client? the browser?
 if (Meteor.isClient) {
   console.log("Running in Client!");
