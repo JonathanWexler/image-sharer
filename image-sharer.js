@@ -1,8 +1,12 @@
 Images = new Mongo.Collection("images");
-console.log(images.find().count());
+console.log(Images.find().count());
 
 // Is the code running in the client? the browser?
 if (Meteor.isClient) {
+
+  Accounts.ui.config({
+    passwordSignupFields: "USERNAME_ONLY"
+  });
   console.log("Running in Client!");
 
   var images = [
@@ -19,7 +23,18 @@ if (Meteor.isClient) {
     image_alt: "Alan Gif"
   }
   ]
+  Template.body.helpers({
+    username: function(){
+      if (Meteor.user()) {
+        console.log(Meteor.user())
+        return Meteor.user().emails[0].address;
 
+      } else {
+        return "Jon";
+
+      };
+    }
+  })
 
   Template.images.helpers ({data_images: images})
   Template.time.helpers({
