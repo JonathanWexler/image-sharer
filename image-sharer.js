@@ -3,29 +3,47 @@ console.log(Images.find().count());
 
 // Is the code running in the client? the browser? 
 if (Meteor.isClient) {
+
+  FlowRouter.route('/blog/:postId', {
+    name: 'blogPost',
+    action: function(params) {
+      console.log("This is my blog post:", params.postId);
+    }
+  });
+
+  FlowRouter.route('/', {
+    name: 'home',
+    action: function(params) {
+      console.log("This is my blog post:", params.postId);
+    }
+  });
+  
+  // if (Images.find().count == 0) {
+  //   console.log("NO IMAGES")
+  //   Images.insert({image_src: "guyf.gif", image_alt: "Reverse Guy" })
+  //   Images.insert({image_src: "alanb.gif", image_alt: "Alan as Bieber" })
+  //   Images.insert({image_src:"alan.gif", image_alt: "Alan Gif" })
+  // };
+
   Accounts.ui.config({ passwordSignupFields: "USERNAME_ONLY" });
 
   console.log("Running in Client!");
 
-  var set_images = [{image_src: "guyf.gif", image_alt: "Reverse Guy" },
-  {image_src: "alanb.gif", image_alt: "Alan as Bieber" }, { image_src:
-    "alan.gif", image_alt: "Alan Gif" } ] 
-
   var images = Images.find({})
 
-    Template.body.helpers({ 
-      username: function(){ 
-        if (Meteor.user()) { 
-          console.log(Meteor.user()) 
-          return Meteor.user().username.toUpperCase();
-        } else {   
-          return "World!";
+  Template.body.helpers({ 
+    username: function(){ 
+      if (Meteor.user()) { 
+        console.log(Meteor.user()) 
+        return Meteor.user().username.toUpperCase();
+      } else {   
+        return "World!";
 
-        };     
-      }   
-    })
-    Template.body.events({
-      "click .add-image" : function(e){
+      };     
+    }   
+  })
+  Template.body.events({
+    "click .add-image" : function(e){
         // alert($('#new-image').val());
         var url = $('#new-image').val();
         Images.insert({
