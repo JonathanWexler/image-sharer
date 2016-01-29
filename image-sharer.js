@@ -25,8 +25,13 @@ if (Meteor.isClient) {
       }   
     })
     Template.body.events({
-      "click .add-image" : function(){
-
+      "click .add-image" : function(e){
+        // alert($('#new-image').val());
+        var url = $('#new-image').val();
+        Images.insert({
+          image_src: url
+        })
+        return false;
       }
     })
 
