@@ -21,3 +21,6 @@ insecure                # Allow all DB writes from clients (for prototyping)
 twbs:bootstrap
 accounts-ui
 accounts-password
+kadira:flow-router
+aldeed:collection2
+accounts-facebook
