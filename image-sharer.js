@@ -47,7 +47,9 @@ if (Meteor.isClient) {
         // alert($('#new-image').val());
         var url = $('#new-image').val();
         Images.insert({
-          image_src: url
+          image_src: url,
+          createdOn: new Date(),
+          createdBy: Meteor.user()._id
         })
         return false;
       }
