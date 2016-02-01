@@ -53,7 +53,17 @@ if (Meteor.isClient) {
       }
     })
 
-  Template.images.helpers ({data_images: images})   
+  Template.images.helpers ({
+    data_images: images,
+    getUser : function(user_id) {
+      var user = Meteor.users.findOne({_id:user_id});
+      if (user) {
+        return user.username;
+      }else {
+        return "anonymous";
+      };
+    }
+  })   
   
   Template.time.helpers({now: new Date() }) 
 }
