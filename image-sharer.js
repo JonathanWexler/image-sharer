@@ -17,13 +17,6 @@ if (Meteor.isClient) {
       console.log("This is my blog post:", params.postId);
     }
   });
-  
-  // if (Images.find().count == 0) {
-  //   console.log("NO IMAGES")
-  //   Images.insert({image_src: "guyf.gif", image_alt: "Reverse Guy" })
-  //   Images.insert({image_src: "alanb.gif", image_alt: "Alan as Bieber" })
-  //   Images.insert({image_src:"alan.gif", image_alt: "Alan Gif" })
-  // };
 
   Accounts.ui.config({ passwordSignupFields: "USERNAME_ONLY" });
 
@@ -52,7 +45,10 @@ if (Meteor.isClient) {
           createdBy: Meteor.user()._id
         })
         return false;
-      }
+      },
+    "click .caption" : function(e){
+      Images.remove(this._id)
+    }
     })
 
   Template.images.helpers ({
